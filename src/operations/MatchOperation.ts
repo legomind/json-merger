@@ -1,4 +1,4 @@
-import jsonpath from "jsonpath";
+import { JSONPath } from "jsonpath-plus";
 import { JsonPointer } from "json-ptr";
 import Operation from "./Operation";
 
@@ -31,9 +31,11 @@ export default class MatchOperation extends Operation {
     // Handle $match.query
     else if (keywordValue.query !== undefined) {
       // Try to find a matching item in the result
-      const path = jsonpath.paths(resultArray, keywordValue.query)[0];
-      matchedResultArrayIndex =
-        path !== undefined ? (path[1] as number) : undefined;
+      matchedResultArrayIndex = JSONPath({
+        path: keywordValue.query,
+        json: resultArray,
+        resultType: 'parentProperty'
+      })[0]
     }
 
     // Handle $match.path

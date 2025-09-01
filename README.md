@@ -985,7 +985,7 @@ var result = jsonMerger.mergeFiles(["a.json", "b.json"]);
 
 #### Match by JSON path query
 
-Use `$match.query` to match an array item with a [JSON path](https://www.npmjs.com/package/jsonpath) query.
+Use `$match.query` to match an array item with a [JSON path](https://www.npmjs.com/package/jsonpath-plus) query.
 The following example will search for an array item containing the value `2` and merge it with the value `4`.
 
 **javascript**
@@ -1256,7 +1256,7 @@ var result = jsonMerger.mergeFile("a.json");
 
 #### Use `$select.query` to select by JSON path query
 
-More information about JSON path queries can be found in the [JSON path documentation](https://www.npmjs.com/package/jsonpath).
+More information about JSON path queries can be found in the [JSON path documentation](https://www.npmjs.com/package/jsonpath-plus).
 
 **javascript**
 

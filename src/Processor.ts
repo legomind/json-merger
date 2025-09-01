@@ -1,5 +1,5 @@
 import path from "path";
-import jsonpath from "jsonpath";
+import { JSONPath } from "jsonpath-plus";
 import { JsonPointer } from "json-ptr";
 import { isObject } from "./utils/types";
 import {
@@ -505,7 +505,10 @@ export default class Processor {
     if (path === undefined) {
       result = target;
     } else if (isObject(target) || Array.isArray(target)) {
-      result = jsonpath.query(target, path);
+      result = JSONPath({
+        path: path,
+        json: target
+      });
     }
 
     if (
